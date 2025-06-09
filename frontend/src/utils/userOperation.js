@@ -1,4 +1,4 @@
-const backendUrl = import.meta.env.VITE_BACKED_URL;
+const backendUrl = "http://127.0.0.1:5000";
 
 export const getUsers = async () => {
   let result = { success: false, data: null, error: null, loading: true };
