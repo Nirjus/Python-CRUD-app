@@ -1,0 +1,21 @@
+@mixin addFriendsBtn {
+  border: none;
+  outline: none;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: white;
+  background-image: linear-gradient(60deg, yellow, orangered);
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+
+  &:hover {
+    opacity: 0.8;
+    box-shadow: 0 0 10px rgba(255, 166, 0, 0.689);
+    transition: all 0.2s ease-in-out;
+  }
+  &:active {
+    opacity: 0.6;
+  }
+}

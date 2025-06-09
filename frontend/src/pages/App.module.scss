@@ -1,0 +1,32 @@
+@use "../styles/abstracts/variables" as screens;
+@use "../styles/abstracts/mixins" as mixins;
+
+.appContainer {
+  padding: 20px;
+  max-width: 70vw;
+  margin: auto;
+  display: flex;
+  flex-direction: row-reverse;
+  button {
+    @include mixins.addFriendsBtn;
+    span {
+      font-weight: 800;
+      @media screen and (max-width: screens.$breakpoint-mobile) {
+        display: none;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: screens.$breakpoint-tablet) {
+  .appContainer {
+    max-width: 75vw;
+    padding: 10px;
+  }
+}
+@media screen and (max-width: screens.$breakpoint-mobile) {
+  .appContainer {
+    max-width: 85vw;
+    padding: 10px;
+  }
+}

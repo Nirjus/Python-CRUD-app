@@ -1,0 +1,49 @@
+@use "abstracts/colors" as color;
+
+@use "base/typography";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+body {
+  background-color: color.$color-primary;
+  input[type="radio"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #c4ac5d;
+    border-radius: 50%;
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    transition: border-color 0.2s;
+
+    &:checked {
+      background-color: #af8c4c;
+      border-color: #8e8738;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: transparent;
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    &:checked::after {
+      opacity: 1;
+      background: #faa52f;
+    }
+  }
+}

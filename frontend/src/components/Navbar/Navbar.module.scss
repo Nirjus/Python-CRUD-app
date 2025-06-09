@@ -1,0 +1,39 @@
+@use "../../styles/abstracts/colors" as colors;
+@use "../../styles/abstracts/variables" as screens;
+
+.container {
+  max-width: 60vw;
+  padding: 1rem 4rem;
+  background-color: colors.$color-dark-primary;
+  margin: auto;
+  margin-top: 10px;
+  border-radius: 10px;
+  box-shadow: rgba(49, 49, 49, 0.378) 10px 10px 0px -2px;
+
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    gap: 10px;
+    p {
+      font-size: small;
+      font-weight: 600;
+      margin-right: 10px;
+    }
+  }
+}
+
+@media screen and (max-width: screens.$breakpoint-tablet) {
+  .container {
+    max-width: 70vw;
+    padding: 1rem 2rem;
+  }
+}
+
+@media screen and (max-width: screens.$breakpoint-mobile) {
+  .container {
+    max-width: 80vw;
+    padding: 1rem 1rem;
+  }
+}

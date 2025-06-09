@@ -1,0 +1,75 @@
+/* src/styles/base/_typography.scss */
+
+// Base font styles for the entire document
+body {
+  font-family: "Arial", sans-serif; /* Your primary font */
+  font-size: 16px; /* Base font size, often used for 'rem' calculation (e.g., 1rem = 16px) */
+  line-height: 1.6; /* Default line height for readability */
+  -webkit-font-smoothing: antialiased; /* Better font rendering on macOS/iOS */
+  -moz-osx-font-smoothing: grayscale; /* Better font rendering on macOS/iOS */
+}
+
+// Heading styles
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Arial", serif; /* A different font for headings, or keep the same */
+  font-weight: bold; /* Default heading weight */
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 2.8rem; /* Using rem units for scalability */
+}
+
+h2 {
+  font-size: 2.2rem;
+}
+
+h3 {
+  font-size: 1.8rem;
+}
+
+h4 {
+  font-size: 1.4rem;
+}
+
+h5 {
+  font-size: 1.2rem;
+}
+
+h6 {
+  font-size: 1rem; /* Often same as base font size */
+}
+
+// Link styles
+a {
+  color: #007bff; /* Default link color */
+  text-decoration: none; /* No underline by default */
+
+  &:hover {
+    text-decoration: underline; /* Underline on hover */
+  }
+
+  &:visited {
+    color: #6610f2; /* Color for visited links */
+  }
+}
+
+// List styles
+ul,
+ol {
+  margin-bottom: 1em;
+  padding-left: 1.5em; /* Indent lists */
+}
+
+ul {
+  list-style-type: disc; /* Default bullet style for unordered lists */
+}
+
+ol {
+  list-style-type: decimal; /* Default numbering style for ordered lists */
+}

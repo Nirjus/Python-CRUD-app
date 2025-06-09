@@ -1,0 +1,123 @@
+@use "../../styles/abstracts/colors" as colors;
+
+.cardContainer {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: colors.$color-secondary;
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.02);
+    transition: transform 0.2s ease-in-out;
+  }
+  .cardHeader {
+    margin-top: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    .userInfo {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      span {
+        color: white;
+        h4 {
+          font-weight: 800;
+        }
+        p {
+          color: rgba(255, 255, 255, 0.705);
+          text-transform: capitalize;
+          font-style: italic;
+        }
+      }
+      img {
+        width: 50px;
+        height: 50px;
+      }
+    }
+    .actionButns {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      button {
+        border: none;
+        outline: none;
+        padding: 5px;
+        cursor: pointer;
+        color: white;
+        border-radius: 5px;
+
+        &:last-child {
+          color: #f74835; // red
+          background-color: rgba(236, 126, 126, 0.114);
+          &:hover {
+            background-color: rgba(236, 126, 126, 0.2);
+          }
+        }
+        &:first-child {
+          color: #27ae60; // green
+          background-color: rgba(39, 174, 95, 0.116);
+          &:hover {
+            background-color: rgba(39, 174, 95, 0.2);
+          }
+        }
+      }
+    }
+  }
+  .cardFooter {
+    border-top: 1px dashed rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 5px;
+    margin-top: 15px;
+  }
+}
+
+.deleteContainer {
+  background: transparent;
+  // padding: 0px 10px;
+  h3 {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.568);
+  }
+  .warning {
+    display: flex;
+    margin-top: 5px;
+    align-items: center;
+    word-wrap: break-word;
+    gap: 10px;
+    border-left: 2px solid yellow;
+    padding: 1rem;
+    background-color: rgba(255, 255, 0, 0.082);
+    p {
+      font-size: smaller;
+      color: yellow;
+      font-style: italic;
+    }
+  }
+  .btnContainer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    align-items: center;
+    button {
+      padding: 10px 20px;
+      border: none;
+      outline: none;
+      border-radius: 5px;
+      font-weight: 700;
+      &:hover {
+        opacity: 0.7;
+        cursor: pointer;
+      }
+      &:first-child {
+        background-color: rgb(40, 40, 40);
+        color: white;
+      }
+
+      &:last-child {
+        background-color: rgba(255, 255, 255, 0.126);
+      }
+    }
+  }
+}

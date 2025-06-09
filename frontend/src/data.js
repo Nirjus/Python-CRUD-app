@@ -1,0 +1,42 @@
+export const friendsData = [
+  {
+    name: "Alice",
+    id: 1,
+    img_url: "https://avatar.iran.liara.run/public/boy",
+    gender: "female",
+    role: "Fisher man",
+    description: "Alice is a skilled fisher",
+  },
+  {
+    name: "Bob",
+    id: 2,
+    img_url: "https://avatar.iran.liara.run/public/girl",
+    gender: "male",
+    role: "Hunter",
+    description: "Bob is a skilled hunter",
+  },
+  {
+    name: "Charlie",
+    id: 3,
+    img_url: "https://avatar.iran.liara.run/public/boy",
+    gender: "male",
+    role: "Blacksmith",
+    description: "Charlie is a skilled blacksmith",
+  },
+  {
+    name: "Diana",
+    id: 4,
+    img_url: "https://avatar.iran.liara.run/public/girl",
+    gender: "female",
+    role: "Mage",
+    description: "Diana is a skilled mage",
+  },
+  {
+    name: "Ethan",
+    id: 5,
+    img_url: "https://avatar.iran.liara.run/public/boy",
+    gender: "male",
+    role: "Warrior",
+    description: "Ethan is a skilled warrior",
+  },
+];

@@ -1,0 +1,54 @@
+@use "../../../styles/abstracts/mixins" as mixins;
+
+.modelBody {
+  background-color: transparent;
+  input,
+  textarea {
+    outline: none;
+    padding: 10px;
+    background-color: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.107);
+    color: aliceblue;
+    width: 100%;
+    &:focus {
+      border: 2px solid orange;
+    }
+  }
+  label {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 10px;
+  }
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  .container1,
+  .container2 {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    width: 100%;
+  }
+  .container2 {
+    margin-top: 1rem;
+    gap: 3.5rem;
+    .checkbox {
+      display: flex;
+      gap: 5px;
+      flex-direction: row-reverse;
+      margin-left: 1rem;
+    }
+  }
+  .container3 {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+    button {
+      @include mixins.addFriendsBtn;
+      font-weight: 700;
+    }
+  }
+}
