@@ -17,16 +17,17 @@ def create_friends():
         data = request.json
         required_fields = ("name", "role", "description", "gender")
         for field in required_fields:
-            if field not in data:
+            if field not in data or not data.get(field):
                 return jsonify({
                     "error": f"missing required field {field}"
                 }), 400
+        # name = ""
         name = data.get("name")
         role = data.get("role")
         description = data.get("description")
         gender = data.get("gender")
 
-        image_url = f"https://avatar.iran.liara.run/public/{gender}?username={name}"
+        image_url = f"https://avatar.iran.liara.run/public/{gender}?username={name.replace(" ","")}"
         new_friend = Friend(name=name, role=role, description=description, gender=gender, img_url=image_url)
         db.session.add(new_friend)
         db.session.commit()
@@ -58,6 +59,7 @@ def delete_friend(id):
             "error": str(e)
         }), 500
     
+# Edit a friend
 @app.route("/api/friends/<int:id>", methods=["PATCH"])
 def update_friend(id):
     try:
@@ -75,7 +77,10 @@ def update_friend(id):
 
         db.session.commit()
 
-        return jsonify(friend.to_json()), 200
+        return jsonify({
+            "msg": "Friend details updated",
+            "friend": friend.to_json()
+        }), 200
     
     except Exception as e:
         db.session.rollback()

@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import { Edit, Delete, TriangleAlert } from "lucide-react";
+import toast from "react-hot-toast";
 import Modal from "../Modal/Modal";
-import styles from "./Card.module.scss";
 import ModalBody from "../Modal/ModalBody/ModalBody";
+import { deleteUser } from "../../utils/userOperation";
+import Loader from "../loader/Loader";
+import styles from "./Card.module.scss";
 
-const Card = ({ friend }) => {
+const Card = ({ friend, fetchUsers }) => {
   const [isDelete, setIsDelete] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
   return (
@@ -12,7 +15,7 @@ const Card = ({ friend }) => {
       <div className={styles.cardContainer}>
         <div className={styles.cardHeader}>
           <div className={styles.userInfo}>
-            <img src={friend.img_url} alt={friend.name} />
+            <img src={friend.imgUrl} alt={friend.name} />
             <span>
               <h4>{friend.name}</h4>
               <p>{friend.role}</p>
@@ -32,22 +35,47 @@ const Card = ({ friend }) => {
       {isDelete && (
         <Modal
           setIsOpen={setIsDelete}
-          contentBox={<DeleteFriendComponent setIsDelete={setIsDelete} />}
+          contentBox={
+            <DeleteFriendComponent
+              setIsDelete={setIsDelete}
+              id={friend.id}
+              fetchUsers={fetchUsers}
+            />
+          }
         />
       )}
       {isEdit && (
         <Modal
           setIsOpen={setIsEdit}
           headerText="Edit my buddy 🧜‍♂️"
-          contentBox={<ModalBody friend={friend} />}
+          contentBox={
+            <ModalBody
+              isEdit
+              friend={friend}
+              setModalclose={setIsEdit}
+              fetchUser={fetchUsers}
+            />
+          }
         />
       )}
     </>
   );
 };
 
-const DeleteFriendComponent = ({ setIsDelete }) => {
-  function deleteFriend() {}
+const DeleteFriendComponent = ({ setIsDelete, id, fetchUsers }) => {
+  const [isLoading, setIsLoading] = useState(false);
+  async function deleteFriend() {
+    setIsLoading(true);
+    const result = await deleteUser(id);
+    setIsLoading(false);
+    if (result.success) {
+      toast.success(result.data.msg);
+      setIsDelete(true);
+      fetchUsers();
+    } else {
+      toast.error(result.error);
+    }
+  }
   return (
     <div className={styles.deleteContainer}>
       <h3>Are you sure, you want to delete the friend?</h3>
@@ -60,12 +88,18 @@ const DeleteFriendComponent = ({ setIsDelete }) => {
       </span>
       <br />
       <div className={styles.btnContainer}>
-        <button type="button" onClick={deleteFriend}>
-          Yes
-        </button>
-        <button type="button" onClick={() => setIsDelete(false)}>
-          No
-        </button>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <>
+            <button type="button" onClick={deleteFriend}>
+              Yes
+            </button>
+            <button type="button" onClick={() => setIsDelete(false)}>
+              No
+            </button>
+          </>
+        )}
       </div>
     </div>
   );

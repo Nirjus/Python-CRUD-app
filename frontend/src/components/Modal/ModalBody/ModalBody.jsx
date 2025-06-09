@@ -1,12 +1,40 @@
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import style from "./ModalBody.module.scss";
+import { createUser, editUser } from "../../../utils/userOperation";
+import Loader from "../../loader/Loader";
 
-const ModalBody = ({ friend }) => {
+const ModalBody = ({ friend, isEdit = false, setModalclose, fetchUser }) => {
+  const [loading, setLoading] = useState(false);
   const [gender, setGender] = useState(friend?.gender || "");
   const [name, setName] = useState(friend?.name || "");
   const [description, setDescription] = useState(friend?.description || "");
   const [role, setRole] = useState(friend?.role || "");
 
+  async function handleCreateUser() {
+    setLoading(true);
+    const result = await createUser(name, role, description, gender);
+    setLoading(false);
+    if (result.success) {
+      toast.success(result.data.msg);
+      fetchUser();
+      setModalclose(false);
+    } else {
+      toast.error(result.error);
+    }
+  }
+  async function handleEditUser() {
+    setLoading(true);
+    const result = await editUser(friend.id, name, role, description, gender);
+    setLoading(false);
+    if (result.success) {
+      toast.success(result.data.msg);
+      fetchUser();
+      setModalclose(false);
+    } else {
+      toast.error(result.error);
+    }
+  }
   return (
     <div className={style.modelBody}>
       <div className={style.container1}>
@@ -74,7 +102,16 @@ const ModalBody = ({ friend }) => {
       </div>
 
       <div className={style.container3}>
-        <button type="submit">Save</button>
+        {loading ? (
+          <Loader />
+        ) : (
+          <button
+            type="button"
+            onClick={isEdit ? handleEditUser : handleCreateUser}
+          >
+            {isEdit ? "Save" : "Create"}
+          </button>
+        )}
       </div>
     </div>
   );
