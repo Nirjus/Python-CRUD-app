@@ -21,13 +21,12 @@ def create_friends():
                 return jsonify({
                     "error": f"missing required field {field}"
                 }), 400
-        # name = ""
         name = data.get("name")
         role = data.get("role")
         description = data.get("description")
         gender = data.get("gender")
 
-        image_url = f"https://avatar.iran.liara.run/public/{gender}?username={name.replace(" ","")}"
+        image_url = f"https://avatar.iran.liara.run/public/{gender}?username={name}"
         new_friend = Friend(name=name, role=role, description=description, gender=gender, img_url=image_url)
         db.session.add(new_friend)
         db.session.commit()
