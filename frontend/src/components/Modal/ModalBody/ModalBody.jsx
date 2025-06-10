@@ -78,24 +78,24 @@ const ModalBody = ({ friend, isEdit = false, setModalclose, fetchUser }) => {
       </div>
       <div className={style.container2}>
         <div className={style.checkbox}>
-          <label htmlFor="male">Male</label>
+          <label htmlFor="boy">Boy</label>
           <input
             type="radio"
-            name="Male"
-            id="male"
-            value={"male"}
-            checked={gender == "male"}
+            name="boy"
+            id="boy"
+            value={"boy"}
+            checked={gender === "boy"}
             onChange={(e) => setGender(e.target.value)}
           />
         </div>
         <div className={style.checkbox}>
-          <label htmlFor="female">Female</label>
+          <label htmlFor="girl">Girl</label>
           <input
             type="radio"
-            name="Female"
-            id="female"
-            value="female"
-            checked={gender === "female"}
+            name="girl"
+            id="girl"
+            value="girl"
+            checked={gender === "girl"}
             onChange={(e) => setGender(e.target.value)}
           />
         </div>
